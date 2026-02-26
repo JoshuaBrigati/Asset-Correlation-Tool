@@ -14,7 +14,7 @@ What's built:
 
 - `POST /api/correlation` — the full correlation engine, ported from the internal Express server and adapted for Next.js App Router
 - Stock/ETF price history via Yahoo Finance (any ticker)
-- Crypto price history via Yahoo Finance (`BTC-USD`, `ETH-USD`, etc. — same source as stocks, no API key required)
+- Crypto and stock/ETF price history via Yahoo Finance (no API key required)
 - Pearson correlation: rolling chart series and full NxN matrix
 - TypeScript types exported for candidates to use
 - `app/_data/assets.ts` — `AllAssets` and `DefaultAssets` arrays with the `AssetOption` interface
@@ -30,34 +30,32 @@ What candidates build:
 - **Bitwise fund symbols (BITW, BITQ, BWEB)** are supported as regular stock tickers via Yahoo Finance. The internal `BitwiseFund` compare type has been removed — candidates pass them in `stockSymbols`.
 - **Crypto data source** replaced from internal MongoDB with CoinGecko's free public API. No authentication needed; rate limits are generous enough for dev/interview use.
 - **No environment variables** are required. The app runs immediately after `npm install`.
-- **Candidates are restricted** from modifying `core/`, `lib/`, `getCorrelations.ts`, and `app/api/` — these are off-limits per the README instructions.
+- The scaffolded backend (`app/_core/`, `app/api/`) is noted in the README as code candidates don't need to touch, but is not hard off-limits.
 
 ## Project Structure
 
 ```
 /
 ├── app/
+│   ├── _core/                 # Scaffolded backend — candidates don't need to touch
+│   │   ├── CorrelationCalculator.ts
+│   │   ├── correlationTypes.ts
+│   │   ├── CryptoHistoryFetcher.ts
+│   │   ├── MarketDataValidator.ts
+│   │   ├── StockHistoryFetcher.ts
+│   │   ├── dayjsHelper.ts
+│   │   ├── yahooFinance.ts
+│   │   └── getCorrelations.ts
 │   ├── _data/
 │   │   └── assets.ts          # AllAssets and DefaultAssets arrays
+│   ├── _types/
+│   │   └── statistics.js.d.ts
 │   ├── api/
 │   │   └── correlation/
-│   │       └── route.ts       # POST /api/correlation — off-limits for candidates
+│   │       └── route.ts       # POST /api/correlation
 │   ├── globals.css            # Tailwind v4 + base styles
 │   ├── layout.tsx
 │   └── page.tsx               # Candidate starting point
-├── core/                      # Off-limits for candidates
-│   └── correlation/
-│       ├── CorrelationCalculator.ts
-│       ├── correlationTypes.ts
-│       ├── CryptoHistoryFetcher.ts
-│       ├── MarketDataValidator.ts
-│       └── StockHistoryFetcher.ts
-├── lib/                       # Off-limits for candidates
-│   ├── dayjsHelper.ts
-│   └── yahooFinance.ts
-├── types/
-│   └── statistics.js.d.ts
-├── getCorrelations.ts         # Off-limits for candidates
 ├── postcss.config.mjs
 └── README.md                  # Candidate-facing instructions
 ```

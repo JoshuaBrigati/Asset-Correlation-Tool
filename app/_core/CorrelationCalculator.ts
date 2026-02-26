@@ -1,7 +1,7 @@
 import {
   checkIsSameOrAfterDay,
   parseEtDateStringAsDayjs,
-} from "@/lib/dayjsHelper";
+} from "./dayjsHelper";
 import {
   AssetData,
   CorrelationDataList,
@@ -9,7 +9,7 @@ import {
   CorrelationMatrix,
   CorrelationsOutput,
   RollingCorrelations,
-} from "@/core/correlation/correlationTypes";
+} from "./correlationTypes";
 import { Dayjs } from "dayjs";
 import Statistics from "statistics.js";
 

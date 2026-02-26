@@ -1,11 +1,11 @@
 import { AxiosError } from "axios";
-import { parseUnixSecondsAsDayjs } from "@/lib/dayjsHelper";
-import { getHistoryClosePrices } from "@/lib/yahooFinance";
+import { parseUnixSecondsAsDayjs } from "./dayjsHelper";
+import { getHistoryClosePrices } from "./yahooFinance";
 import {
   AssetData,
   AssetHistoryFetcher,
   PriceHistory,
-} from "@/core/correlation/correlationTypes";
+} from "./correlationTypes";
 import { Dayjs } from "dayjs";
 
 /**

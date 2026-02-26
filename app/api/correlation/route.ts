@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { isValidYYYYMMDD, parseEtDateStringAsDayjs } from "@/lib/dayjsHelper";
-import { getCorrelations } from "@/getCorrelations";
-import { CompareType } from "@/core/correlation/correlationTypes";
+import { isValidYYYYMMDD, parseEtDateStringAsDayjs } from "@/app/_core/dayjsHelper";
+import { getCorrelations } from "@/app/_core/getCorrelations";
+import { CompareType } from "@/app/_core/correlationTypes";
 
 export async function POST(request: Request): Promise<NextResponse> {
   try {

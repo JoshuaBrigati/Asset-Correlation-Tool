@@ -4,13 +4,13 @@ import {
   getMarketCloseTimeAsDayjs,
   getEtTodayAsDayjs,
   parseUnixSecondsAsDayjs,
-} from "@/lib/dayjsHelper";
-import { getHistoryClosePrices } from "@/lib/yahooFinance";
+} from "./dayjsHelper";
+import { getHistoryClosePrices } from "./yahooFinance";
 import {
   AssetData,
   AssetHistoryFetcher,
   PriceHistory,
-} from "@/core/correlation/correlationTypes";
+} from "./correlationTypes";
 import { Dayjs } from "dayjs";
 
 export class StockHistoryFetcher implements AssetHistoryFetcher {

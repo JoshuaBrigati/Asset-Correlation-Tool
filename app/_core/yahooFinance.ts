@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dayjs } from "dayjs";
-import { PriceHistory } from "@/core/correlation/correlationTypes";
+import { PriceHistory } from "./correlationTypes";
 
 /**
  * Fetches adjusted close price history for a stock symbol from Yahoo Finance.

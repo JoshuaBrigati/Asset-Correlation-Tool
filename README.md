@@ -24,6 +24,8 @@ This is a TypeScript Next.js project with Tailwind CSS pre-configured. You're no
 
 Asset data is in `app/_data/assets.ts`. See [All Assets vs Default Assets](#all-assets-vs-default-assets) below for context on how to use it.
 
+The scaffolded backend lives in `app/_core/` and `app/api/` — you don't need to touch these, but you're welcome to read through them.
+
 ## The Task
 
 Build a UI in `app/page.tsx` (and any additional components or pages you like) that lets a user:

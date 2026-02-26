@@ -1,5 +1,5 @@
-import { parseEtDateStringAsDayjs } from "@/lib/dayjsHelper";
-import { CorrelationCalculator } from "@/core/correlation/CorrelationCalculator";
+import { parseEtDateStringAsDayjs } from "./dayjsHelper";
+import { CorrelationCalculator } from "./CorrelationCalculator";
 import {
   AssetData,
   AssetHistoryFetcher,
@@ -8,10 +8,10 @@ import {
   CorrelationsOutput,
   ErrorData,
   MAX_CORRELATION_ASSETS,
-} from "@/core/correlation/correlationTypes";
-import { CryptoHistoryFetcher } from "@/core/correlation/CryptoHistoryFetcher";
-import { MarketDataValidator } from "@/core/correlation/MarketDataValidator";
-import { StockHistoryFetcher } from "@/core/correlation/StockHistoryFetcher";
+} from "./correlationTypes";
+import { CryptoHistoryFetcher } from "./CryptoHistoryFetcher";
+import { MarketDataValidator } from "./MarketDataValidator";
+import { StockHistoryFetcher } from "./StockHistoryFetcher";
 import { Dayjs } from "dayjs";
 
 export async function getCorrelations(

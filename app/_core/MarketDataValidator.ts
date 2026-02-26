@@ -1,5 +1,5 @@
-import { parseEtDateStringAsDayjs } from "@/lib/dayjsHelper";
-import { AssetData, CompareType } from "@/core/correlation/correlationTypes";
+import { parseEtDateStringAsDayjs } from "./dayjsHelper";
+import { AssetData, CompareType } from "./correlationTypes";
 
 export class MarketDataValidator {
   /**
