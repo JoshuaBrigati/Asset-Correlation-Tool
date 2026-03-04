@@ -115,7 +115,6 @@ export default function ControlsCard({
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="text-xs font-semibold text-subtle uppercase tracking-[0.06em] shrink-0">Compare</span>
                   <div className="flex items-center gap-2">
-                    <div className="w-1 h-7 rounded-full bg-accent" />
                     <AssetPicker
                       label=""
                       selected={designated}
