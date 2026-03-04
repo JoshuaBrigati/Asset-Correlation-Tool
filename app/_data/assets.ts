@@ -1,7 +1,9 @@
+export type AssetType = "stock" | "etf" | "trust" | "crypto";
+
 export interface AssetOption {
   readonly value: string;
   readonly label: string;
-  readonly type: string; // "stock" | "etf" | "trust" | "crypto"
+  readonly type: AssetType;
   readonly inceptionDate?: string; // YYYY-MM-DD
 }
 
@@ -27,16 +29,12 @@ export const DefaultAssets: AssetOption[] = [
 ];
 
 /**
- * Full searchable asset list. Includes everything in DefaultAssets plus
- * additional stocks, ETFs, and crypto assets.
+ * Full searchable asset list. DefaultAssets appear first, followed by
+ * additional assets only shown when the user types a search query.
  */
-export const AllAssets: AssetOption[] = [
+const AdditionalAssets: AssetOption[] = [
   // ── Crypto ────────────────────────────────────────────────────────────────
-  { value: "BTC", label: "Bitcoin", type: "crypto", inceptionDate: "2014-09-17" },
-  { value: "ETH", label: "Ethereum", type: "crypto", inceptionDate: "2015-08-07" },
   { value: "BNB", label: "BNB", type: "crypto", inceptionDate: "2017-07-25" },
-  { value: "SOL", label: "Solana", type: "crypto", inceptionDate: "2020-04-10" },
-  { value: "XRP", label: "XRP", type: "crypto", inceptionDate: "2014-01-01" },
   { value: "ADA", label: "Cardano", type: "crypto", inceptionDate: "2017-10-02" },
   { value: "AVAX", label: "Avalanche", type: "crypto", inceptionDate: "2020-09-23" },
   { value: "DOGE", label: "Dogecoin", type: "crypto", inceptionDate: "2014-01-01" },
@@ -57,14 +55,7 @@ export const AllAssets: AssetOption[] = [
   { value: "SUI", label: "Sui", type: "crypto", inceptionDate: "2023-05-03" },
   { value: "AAVE", label: "Aave", type: "crypto", inceptionDate: "2020-10-07" },
   { value: "MKR", label: "Maker", type: "crypto", inceptionDate: "2017-12-18" },
-  // ── Bitwise funds ─────────────────────────────────────────────────────────
-  { value: "BITW", label: "Bitwise 10 Crypto Index Fund", type: "trust", inceptionDate: "2017-11-22" },
-  { value: "BITQ", label: "Bitwise Crypto Industry Innovators ETF", type: "etf", inceptionDate: "2021-05-11" },
-  { value: "BWEB", label: "Bitwise Web3 ETF", type: "etf", inceptionDate: "2022-10-04" },
   // ── Broad market ETFs ─────────────────────────────────────────────────────
-  { value: "SPY", label: "SPDR S&P 500 ETF", type: "etf", inceptionDate: "1993-01-29" },
-  { value: "QQQ", label: "Invesco QQQ Trust (Nasdaq-100)", type: "etf", inceptionDate: "1999-03-10" },
-  { value: "IWM", label: "iShares Russell 2000 ETF", type: "etf", inceptionDate: "2000-05-26" },
   { value: "VTI", label: "Vanguard Total Stock Market ETF", type: "etf", inceptionDate: "2001-05-31" },
   { value: "DIA", label: "SPDR Dow Jones Industrial Average ETF", type: "etf", inceptionDate: "1998-01-20" },
   // ── Sector & thematic ETFs ────────────────────────────────────────────────
@@ -74,7 +65,6 @@ export const AllAssets: AssetOption[] = [
   { value: "XLV", label: "Health Care Select Sector SPDR", type: "etf", inceptionDate: "1998-12-22" },
   { value: "ARKK", label: "ARK Innovation ETF", type: "etf", inceptionDate: "2014-10-31" },
   // ── Commodities & alternatives ────────────────────────────────────────────
-  { value: "GLD", label: "SPDR Gold Shares", type: "etf", inceptionDate: "2004-11-18" },
   { value: "SLV", label: "iShares Silver Trust", type: "etf", inceptionDate: "2006-04-28" },
   { value: "USO", label: "United States Oil Fund", type: "etf", inceptionDate: "2006-04-10" },
   { value: "TLT", label: "iShares 20+ Year Treasury Bond ETF", type: "etf", inceptionDate: "2002-07-30" },
@@ -92,3 +82,5 @@ export const AllAssets: AssetOption[] = [
   { value: "COIN", label: "Coinbase", type: "stock", inceptionDate: "2021-04-14" },
   { value: "MSTR", label: "MicroStrategy", type: "stock" },
 ];
+
+export const AllAssets: AssetOption[] = [...DefaultAssets, ...AdditionalAssets];
