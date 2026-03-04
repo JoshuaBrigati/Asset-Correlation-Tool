@@ -48,7 +48,7 @@ export default function Home() {
               <ErrorDisplay errors={result.errors.errors} warnings={result.errors.warnings} />
             )}
 
-            {hasResults && (
+            {hasResults && result.correlations && (
               <>
                 <InsightCards
                   matrix={result.correlations.correlationMatrix}
@@ -86,7 +86,7 @@ export default function Home() {
           </div>
         )}
 
-        {/* ── Empty state ────────────────────────────────────────── */}
+        {/* Empty state */}
         {!result && !loading && !error && (
           <div className="flex flex-col items-center justify-center py-16">
             <div className="text-center">
@@ -104,7 +104,7 @@ export default function Home() {
           </div>
         )}
 
-        {/* ── Loading skeleton ──────────────────────────────────── */}
+        {/* Loading skeleton */}
         {loading && (
           <div className="space-y-4 animate-fade-up">
             {/* Insight badges */}
@@ -117,7 +117,6 @@ export default function Home() {
             <div className="h-[540px] rounded-2xl skeleton" />
             {/* Matrix */}
             <div className="h-72 rounded-2xl skeleton" />
-
           </div>
         )}
       </div>

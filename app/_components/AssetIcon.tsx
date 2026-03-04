@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import type { AssetType } from "@/app/_data/assets";
+import { TYPE_COLOR } from "@/app/_lib/constants";
 
 interface AssetIconProps {
   symbol: string;
@@ -38,9 +40,6 @@ const CRYPTO_ICON_MAP: Record<string, string> = {
   OP: "https://assets.coingecko.com/coins/images/25244/small/Optimism.png",
   SUI: "https://assets.coingecko.com/coins/images/26375/small/sui_asset.jpeg",
 };
-
-import { TYPE_COLOR } from "@/app/_lib/constants";
-import type { AssetType } from "@/app/_data/assets";
 
 export default function AssetIcon({ symbol, type, size = 20 }: AssetIconProps) {
   const [imgError, setImgError] = useState(false);

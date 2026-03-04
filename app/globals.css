@@ -12,9 +12,6 @@
   --color-accent: #3b82f6;
   --color-accent-hover: #2563eb;
   --color-accent-subtle: rgba(59, 130, 246, 0.06);
-  --color-positive: #10b981;
-  --color-negative: #ef4444;
-  --color-warning: #f59e0b;
 }
 
 html, body {
@@ -45,13 +42,13 @@ body {
 /* Date input styling */
 input[type="date"] { color-scheme: light; }
 
-/* ── Easing tokens ─────────────────────────────────────── */
+/* Easing tokens */
 :root {
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Fade-up entrance ─────────────────────────────────── */
+/* Fade-up entrance */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px) scale(0.98); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -73,24 +70,7 @@ input[type="date"] { color-scheme: light; }
   opacity: 0;
 }
 
-/* ── Controls expand / collapse ───────────────────────── */
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(6px) scale(0.99); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.animate-slide-down {
-  animation: slideDown 0.4s var(--ease-spring) forwards;
-}
-.animate-slide-up {
-  animation: slideUp 0.35s var(--ease-spring) forwards;
-}
-
-/* ── Content crossfade (for in-place swaps) ──────────── */
+/* Content crossfade (for in-place swaps) */
 @keyframes contentFade {
   from { opacity: 0; transform: translateY(3px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -99,7 +79,7 @@ input[type="date"] { color-scheme: light; }
   animation: contentFade 0.25s var(--ease-spring) forwards;
 }
 
-/* ── Dropdown pop ─────────────────────────────────────── */
+/* Dropdown pop */
 @keyframes popIn {
   from { opacity: 0; transform: translateY(-6px) scale(0.95); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -108,7 +88,7 @@ input[type="date"] { color-scheme: light; }
   animation: popIn 0.3s var(--ease-out-expo) forwards;
 }
 
-/* ── Skeleton shimmer ─────────────────────────────────── */
+/* Skeleton shimmer */
 .skeleton {
   background: linear-gradient(90deg, var(--color-input) 0%, var(--color-card) 50%, var(--color-input) 100%);
   background-size: 200% 100%;
@@ -119,13 +99,7 @@ input[type="date"] { color-scheme: light; }
   100% { background-position: -200% 0; }
 }
 
-/* ── Pulse subtle ─────────────────────────────────────── */
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 0.4; }
-  50%      { opacity: 0.7; }
-}
-
-/* ── Global smooth transitions for interactive elements ── */
+/* Global smooth transitions for interactive elements */
 button, a, input, select {
   transition-timing-function: var(--ease-spring);
 }

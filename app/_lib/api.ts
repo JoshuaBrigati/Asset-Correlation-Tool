@@ -15,7 +15,7 @@ export interface CorrelationResponse {
   correlations: {
     correlationChart: Record<string, Array<[number, number]>>;
     correlationMatrix: Array<Record<string, number>>;
-  };
+  } | null;
 }
 
 export interface CorrelationRequest {

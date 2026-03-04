@@ -14,7 +14,6 @@ interface AssetPickerProps {
   max?: number;
   exclude?: string[];
   single?: boolean;
-
 }
 
 export default function AssetPicker({

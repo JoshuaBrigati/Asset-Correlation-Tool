@@ -10,7 +10,7 @@ import {
 } from "@/app/_lib/api";
 import { formatDate, findAsset } from "@/app/_lib/utils";
 
-// ── Helpers ──────────────────────────────────────────────────────────────────
+// Helpers
 
 function defaultStart(): string {
   const d = new Date();
@@ -28,7 +28,7 @@ function writeUrl(base: string, comps: string[], start: string, end: string, win
   window.history.replaceState({}, "", `?${params.toString()}`);
 }
 
-// ── Shared submit logic ─────────────────────────────────────────────────────
+// Shared submit logic
 
 async function runCorrelation(
   base: AssetOption,
@@ -49,7 +49,7 @@ async function runCorrelation(
   });
 }
 
-// ── Hook return type ────────────────────────────────────────────────────────
+// Hook return type
 
 export interface CorrelationControls {
   designated: AssetOption[];
@@ -98,7 +98,7 @@ export interface UseCorrelationReturn {
   handlePreset: (base: AssetOption, comps: AssetOption[]) => void;
 }
 
-// ── Hook ────────────────────────────────────────────────────────────────────
+// Hook
 
 export function useCorrelation(): UseCorrelationReturn {
   // Form state
@@ -119,7 +119,7 @@ export function useCorrelation(): UseCorrelationReturn {
   const [highlightedSymbol, setHighlightedSymbol] = useState<string | null>(null);
   const chartRef = useRef<HTMLDivElement>(null);
 
-  // ── Derived values ──────────────────────────────────────────────────────
+  // Derived values
 
   const minDate = useMemo(() => {
     const dates = [...designated, ...comparisons]
@@ -138,7 +138,7 @@ export function useCorrelation(): UseCorrelationReturn {
   }, [designated, comparisons, startDate, endDate]);
 
   const hasResults = !!(
-    result &&
+    result?.correlations &&
     (Object.keys(result.correlations.correlationChart).length > 0 ||
       result.correlations.correlationMatrix.length > 0)
   );
@@ -153,7 +153,7 @@ export function useCorrelation(): UseCorrelationReturn {
 
   const designatedSymbol = designated[0]?.value || "";
 
-  // ── Core submit (single source of truth) ────────────────────────────────
+  // Core submit (single source of truth)
 
   const submit = useCallback(
     async (base: AssetOption, comps: AssetOption[], start: string, end: string, win: number) => {
@@ -175,7 +175,7 @@ export function useCorrelation(): UseCorrelationReturn {
     [],
   );
 
-  // ── Public handlers ─────────────────────────────────────────────────────
+  // Public handlers
 
   const handleSubmit = useCallback(() => {
     if (!validation.ok || !designated.length) return;
@@ -205,7 +205,7 @@ export function useCorrelation(): UseCorrelationReturn {
     [],
   );
 
-  // ── URL hydration on mount ──────────────────────────────────────────────
+  // URL hydration on mount
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -243,7 +243,7 @@ export function useCorrelation(): UseCorrelationReturn {
     setHydrated(true);
   }, []);
 
-  // ── Return ──────────────────────────────────────────────────────────────
+  // Return
 
   return {
     hydrated,

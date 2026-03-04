@@ -128,13 +128,13 @@ export default function ControlsCard({
 
                   <span className="text-xs font-semibold text-subtle uppercase tracking-[0.06em]">Against</span>
 
-              <AssetPicker
-                label=""
-                selected={comparisons}
-                onChange={onComparisonsChange}
-                max={5}
-                exclude={designated.map((d) => d.value)}
-              />
+                  <AssetPicker
+                    label=""
+                    selected={comparisons}
+                    onChange={onComparisonsChange}
+                    max={5}
+                    exclude={designated.map((d) => d.value)}
+                  />
                 </div>
 
                 {/* Divider */}
