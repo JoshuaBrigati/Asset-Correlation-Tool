@@ -1,32 +1,131 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-surface: #f8f9fb;
+  --color-card: #ffffff;
+  --color-input: #f0f2f5;
+  --color-edge: rgba(0, 0, 0, 0.08);
+  --color-edge-focus: rgba(0, 0, 0, 0.16);
+  --color-fg: #1a1d24;
+  --color-subtle: #5a6070;
+  --color-muted: #8b92a5;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-accent-subtle: rgba(59, 130, 246, 0.06);
+  --color-positive: #10b981;
+  --color-negative: #ef4444;
+  --color-warning: #f59e0b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
+html, body {
   max-width: 100vw;
   overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--color-fg);
+  background: var(--color-surface);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Subtle scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
+
+/* Recharts overrides */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(0,0,0,0.05) !important;
+}
+
+/* Date input styling */
+input[type="date"] { color-scheme: light; }
+
+/* ── Easing tokens ─────────────────────────────────────── */
+:root {
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Fade-up entrance ─────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.55s var(--ease-spring) forwards;
+}
+.animate-fade-up-delay-1 {
+  animation: fadeUp 0.55s var(--ease-spring) 0.08s forwards;
+  opacity: 0;
+}
+.animate-fade-up-delay-2 {
+  animation: fadeUp 0.55s var(--ease-spring) 0.16s forwards;
+  opacity: 0;
+}
+.animate-fade-up-delay-3 {
+  animation: fadeUp 0.55s var(--ease-spring) 0.24s forwards;
+  opacity: 0;
+}
+
+/* ── Controls expand / collapse ───────────────────────── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(6px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.4s var(--ease-spring) forwards;
+}
+.animate-slide-up {
+  animation: slideUp 0.35s var(--ease-spring) forwards;
+}
+
+/* ── Content crossfade (for in-place swaps) ──────────── */
+@keyframes contentFade {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-content-fade {
+  animation: contentFade 0.25s var(--ease-spring) forwards;
+}
+
+/* ── Dropdown pop ─────────────────────────────────────── */
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-pop-in {
+  animation: popIn 0.3s var(--ease-out-expo) forwards;
+}
+
+/* ── Skeleton shimmer ─────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-input) 0%, var(--color-card) 50%, var(--color-input) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Pulse subtle ─────────────────────────────────────── */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 0.7; }
+}
+
+/* ── Global smooth transitions for interactive elements ── */
+button, a, input, select {
+  transition-timing-function: var(--ease-spring);
 }
